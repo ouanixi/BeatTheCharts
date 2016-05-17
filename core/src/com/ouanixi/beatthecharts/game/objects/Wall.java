@@ -14,7 +14,7 @@ public class Wall extends AbstractGameObject {
     private TextureRegion regEdge;
 
     private final float FLOAT_CYCLE_TIME = 2.0f;
-    private final float FLOAT_AMPLITUDE = 0.25f;
+    private final float FLOAT_AMPLITUDE = 3.0f;
     private float floatCycleTimeLeft;
     private boolean floatingDownwards;
     private Vector2 floatTargetPosition;

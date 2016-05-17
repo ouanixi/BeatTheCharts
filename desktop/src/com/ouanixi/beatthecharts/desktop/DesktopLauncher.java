@@ -14,8 +14,8 @@ public class DesktopLauncher {
 		if(rebuildAtlas){
 			TexturePacker.Settings settings = new TexturePacker.Settings();
 			settings.debug = drawDebugOutline;
-			settings.maxWidth = 1024;
-			settings.maxHeight = 1024;
+			settings.maxWidth = 2048;
+			settings.maxHeight = 2048;
 			settings.atlasExtension = ".pack";
 
 			TexturePacker.process(settings, "assets-raw/images",

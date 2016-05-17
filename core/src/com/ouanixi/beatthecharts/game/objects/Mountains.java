@@ -9,13 +9,13 @@ import com.ouanixi.beatthecharts.game.Assets;
 /**
  * Created by ouanixi on 11/04/16.
  */
-public class Buildings extends AbstractGameObject {
+public class Mountains extends AbstractGameObject {
 
     private TextureRegion regMountainLeft;
     private TextureRegion regMountainRight;
     private int length;
 
-    public Buildings(int length) {
+    public Mountains(int length) {
         this.length = length;
         init();
     }

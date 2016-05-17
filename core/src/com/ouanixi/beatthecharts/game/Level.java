@@ -20,8 +20,8 @@ public class Level {
     public Array<Wall> walls;
     // decoration
     public Clouds clouds;
-    public Buildings mountains;
-    public WaterOverlay waterOverlay;
+    public Mountains mountains;
+
 
     public Level(String filename) {
         init(filename);
@@ -109,18 +109,16 @@ public class Level {
         // decoration
         clouds = new Clouds(pixmap.getWidth());
         clouds.position.set(0, 2);
-        mountains = new Buildings
+        mountains = new Mountains
                 (pixmap.getWidth());
         mountains.position.set(-1, -1);
-        waterOverlay = new WaterOverlay(pixmap.getWidth());
-        waterOverlay.position.set(0, -3.75f);
         // free memory
         pixmap.dispose();
         Gdx.app.debug(TAG, "level '" + filename + "' loaded");
     }
 
     public void render(SpriteBatch batch) {
-        // Draw Buildings
+        // Draw Mountains
 
         mountains.render(batch);
 
@@ -144,8 +142,7 @@ public class Level {
 
         // Draw Player Character
         kenny.render(batch);
-        // Draw Water Overlay
-        waterOverlay.render(batch);
+
         // Draw Clouds
         clouds.render(batch);
     }

@@ -28,6 +28,7 @@ public class Assets implements Disposable, AssetErrorListener {
     public AssetPaper paper;
     public AssetLevelDecoration levelDecoration;
     public AssetFonts fonts;
+    public AssetEnemy enemy;
 
     public AssetSounds sounds;
     public AssetMusic music;
@@ -127,6 +128,14 @@ public class Assets implements Disposable, AssetErrorListener {
 
 
 
+        }
+    }
+
+    public class AssetEnemy{
+        // TODO: Implement enemy class
+        public final AtlasRegion enemy;
+        public AssetEnemy(TextureAtlas atlas){
+            enemy = atlas.findRegion("item_bottle");
         }
     }
 
