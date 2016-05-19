@@ -1,215 +1,209 @@
 
 beatthecharts.png
-size: 1024,1024
+size: 2048,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 anim_kenny_idle
   rotate: false
-  xy: 205, 23
-  size: 104, 173
-  orig: 104, 173
-  offset: 0, 0
-  index: 2
-anim_kenny_idle
-  rotate: false
-  xy: 311, 15
+  xy: 2, 2
   size: 105, 173
   orig: 105, 173
   offset: 0, 0
   index: 3
 anim_kenny_idle
   rotate: false
-  xy: 418, 16
+  xy: 1349, 269
+  size: 104, 173
+  orig: 104, 173
+  offset: 0, 0
+  index: 2
+anim_kenny_idle
+  rotate: false
+  xy: 764, 361
   size: 104, 172
   orig: 104, 172
   offset: 0, 0
   index: 1
 anim_kenny_idle
   rotate: false
-  xy: 418, 16
+  xy: 764, 361
   size: 104, 172
   orig: 104, 172
   offset: 0, 0
   index: 4
 kenny
   rotate: false
-  xy: 418, 16
+  xy: 764, 361
   size: 104, 172
   orig: 104, 172
   offset: 0, 0
   index: -1
 anim_kenny_running
   rotate: false
-  xy: 408, 386
+  xy: 115, 186
   size: 131, 168
   orig: 131, 168
   offset: 0, 0
   index: 3
 anim_kenny_running
   rotate: false
-  xy: 541, 385
+  xy: 294, 364
   size: 120, 169
   orig: 120, 169
   offset: 0, 0
   index: 2
 anim_kenny_running
   rotate: false
-  xy: 474, 216
+  xy: 416, 366
   size: 118, 167
   orig: 118, 167
   offset: 0, 0
   index: 4
 anim_kenny_running
   rotate: false
-  xy: 594, 211
+  xy: 536, 367
   size: 116, 166
   orig: 116, 166
   offset: 0, 0
   index: 6
 anim_kenny_running
   rotate: false
-  xy: 712, 208
+  xy: 654, 364
   size: 108, 169
   orig: 108, 169
   offset: 0, 0
   index: 5
 anim_kenny_running
   rotate: false
-  xy: 822, 209
+  xy: 870, 365
   size: 105, 168
   orig: 105, 168
   offset: 0, 0
   index: 1
 carrot
   rotate: false
-  xy: 963, 334
+  xy: 977, 474
   size: 25, 59
   orig: 25, 59
   offset: 0, 0
   index: -1
 carrots
   rotate: false
-  xy: 963, 273
+  xy: 1927, 928
   size: 21, 59
   orig: 21, 59
   offset: 0, 0
   index: -1
 cloud01
   rotate: false
-  xy: 524, 131
+  xy: 1462, 536
   size: 178, 78
   orig: 178, 78
   offset: 0, 0
   index: -1
 cloud02
   rotate: false
-  xy: 663, 466
+  xy: 1463, 703
   size: 198, 88
   orig: 198, 88
   offset: 0, 0
   index: -1
 cloud03
   rotate: false
-  xy: 663, 379
+  xy: 1463, 616
   size: 182, 85
   orig: 182, 85
   offset: 0, 0
   index: -1
 goal
   rotate: false
-  xy: 2, 2
+  xy: 1463, 793
   size: 201, 194
   orig: 201, 194
   offset: 0, 0
   index: -1
 item_bottle
   rotate: false
-  xy: 229, 377
+  xy: 115, 356
   size: 177, 177
   orig: 177, 177
   offset: 0, 0
   index: -1
 item_bottles
   rotate: false
-  xy: 524, 83
+  xy: 1462, 488
   size: 177, 46
   orig: 177, 46
   offset: 0, 0
   index: -1
 item_paper
   rotate: false
-  xy: 524, 35
+  xy: 1462, 440
   size: 139, 46
   orig: 139, 46
   offset: 0, 0
   index: -1
 kenny_grounded
   rotate: false
-  xy: 863, 395
+  xy: 1798, 828
   size: 127, 159
   orig: 127, 159
   offset: 0, 0
   index: -1
 kenny_jump_falling
   rotate: false
-  xy: 229, 200
+  xy: 1666, 812
   size: 130, 175
   orig: 130, 175
   offset: 0, 0
   index: -1
 kenny_jump_rising
   rotate: false
-  xy: 361, 190
+  xy: 1349, 444
   size: 111, 185
   orig: 111, 185
   offset: 0, 0
   index: -1
 mountain_left
   rotate: false
-  xy: 2, 783
+  xy: 2, 762
   size: 1000, 225
   orig: 1000, 225
   offset: 0, 0
   index: -1
 mountain_right
   rotate: false
-  xy: 2, 556
+  xy: 2, 535
   size: 1000, 225
   orig: 1000, 225
   offset: 0, 0
   index: -1
 rock_edge
   rotate: false
-  xy: 116, 198
+  xy: 2, 177
   size: 111, 356
   orig: 111, 356
   offset: 0, 0
   index: -1
 rock_middle
   rotate: false
-  xy: 2, 198
+  xy: 1349, 631
   size: 112, 356
   orig: 112, 356
   offset: 0, 0
   index: -1
-water_overlay
-  rotate: false
-  xy: 929, 233
-  size: 32, 160
-  orig: 32, 160
-  offset: 0, 0
-  index: -1
-
-beatthecharts2.png
-size: 512,1024
-format: RGBA8888
-filter: Nearest,Nearest
-repeat: none
 saxophone-52742
   rotate: false
-  xy: 2, 2
+  xy: 1004, 187
   size: 343, 800
   orig: 343, 800
+  offset: 0, 0
+  index: -1
+water_overlay
+  rotate: false
+  xy: 248, 194
+  size: 32, 160
+  orig: 32, 160
   offset: 0, 0
   index: -1

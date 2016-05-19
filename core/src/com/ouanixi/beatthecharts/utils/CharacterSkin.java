@@ -13,7 +13,7 @@ public enum CharacterSkin {
     private String name;
     private Color color = new Color();
 
-    private CharacterSkin (String name, float r, float g, float b) {
+    CharacterSkin(String name, float r, float g, float b) {
         this.name = name;
         color.set(r, g, b, 1.0f);
     }

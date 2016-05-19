@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Disposable;
 import com.ouanixi.beatthecharts.game.objects.*;
 
 /**
@@ -20,7 +21,8 @@ public class Level {
     public Array<Wall> walls;
     // decoration
     public Clouds clouds;
-    public Mountains mountains;
+
+
 
 
     public Level(String filename) {
@@ -109,9 +111,7 @@ public class Level {
         // decoration
         clouds = new Clouds(pixmap.getWidth());
         clouds.position.set(0, 2);
-        mountains = new Mountains
-                (pixmap.getWidth());
-        mountains.position.set(-1, -1);
+
         // free memory
         pixmap.dispose();
         Gdx.app.debug(TAG, "level '" + filename + "' loaded");
@@ -120,7 +120,9 @@ public class Level {
     public void render(SpriteBatch batch) {
         // Draw Mountains
 
-        mountains.render(batch);
+        // mountains.render(batch);
+
+
 
         // Draw Walls
         for (Wall wall : walls) {
@@ -145,6 +147,8 @@ public class Level {
 
         // Draw Clouds
         clouds.render(batch);
+
+
     }
 
     public void update(float deltaTime) {

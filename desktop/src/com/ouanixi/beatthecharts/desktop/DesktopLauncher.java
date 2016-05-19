@@ -21,6 +21,7 @@ public class DesktopLauncher {
 			TexturePacker.process(settings, "assets-raw/images",
 					"../assets/images/", "beatthecharts");
 
+
 			TexturePacker.process(settings, "assets-raw/images-ui",
 					"../assets/images/", "beatthecharts-ui" );
 		}

@@ -1,68 +1,68 @@
 
 beatthecharts-ui.png
-size: 1024,1024
+size: 2048,512
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 background
   rotate: false
-  xy: 2, 436
+  xy: 2, 2
   size: 641, 481
   orig: 641, 481
   offset: 0, 0
   index: -1
 coins
   rotate: false
-  xy: 2, 77
+  xy: 645, 126
   size: 510, 357
   orig: 510, 357
   offset: 0, 0
   index: -1
 info
   rotate: false
-  xy: 2, 2
+  xy: 1157, 410
   size: 326, 73
   orig: 326, 73
   offset: 0, 0
   index: -1
 kenny
   rotate: false
-  xy: 645, 621
+  xy: 1157, 233
   size: 130, 175
   orig: 130, 175
   offset: 0, 0
   index: -1
 logo
   rotate: false
-  xy: 645, 798
+  xy: 645, 5
   size: 340, 119
   orig: 340, 119
   offset: 0, 0
   index: -1
 options-dn
   rotate: false
-  xy: 777, 646
+  xy: 1289, 258
   size: 150, 150
   orig: 150, 150
   offset: 0, 0
   index: -1
 options-up
   rotate: false
-  xy: 645, 469
-  size: 150, 150
-  orig: 150, 150
+  xy: 1157, 81
+  size: 146, 150
+  orig: 146, 150
   offset: 0, 0
   index: -1
 play-dn
   rotate: false
-  xy: 514, 284
+  xy: 1305, 106
   size: 150, 150
   orig: 150, 150
   offset: 0, 0
   index: -1
 play-up
   rotate: false
-  xy: 514, 132
+  xy: 1485, 333
   size: 150, 150
   orig: 150, 150
   offset: 0, 0

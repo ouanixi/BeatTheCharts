@@ -14,14 +14,14 @@ public class Wall extends AbstractGameObject {
     private TextureRegion regEdge;
 
     private final float FLOAT_CYCLE_TIME = 2.0f;
-    private final float FLOAT_AMPLITUDE = 3.0f;
+    private final float FLOAT_AMPLITUDE = 4.0f;
     private float floatCycleTimeLeft;
     private boolean floatingDownwards;
     private Vector2 floatTargetPosition;
 
     private int length;
 
-    public Wall(){
+    public Wall() {
         init();
     }
 
@@ -33,7 +33,7 @@ public class Wall extends AbstractGameObject {
         setLength(1);
 
         floatingDownwards = false;
-        floatCycleTimeLeft = MathUtils.random(0, FLOAT_CYCLE_TIME *0.5f);
+        floatCycleTimeLeft = MathUtils.random(0, FLOAT_CYCLE_TIME * 0.5f);
         floatTargetPosition = null;
     }
 
@@ -53,27 +53,27 @@ public class Wall extends AbstractGameObject {
         relX = 0;
         reg = regMiddle;
         for (int i = 0; i < length; i++) {
-            batch.draw(reg.getTexture(), position.x + relX, position.y +  relY, origin.x, origin.y, dimension.x, dimension.y, scale.x, scale.y, rotation, reg.getRegionX(), reg.getRegionY(), reg.getRegionWidth(), reg.getRegionHeight(), false, false);
+            batch.draw(reg.getTexture(), position.x + relX, position.y + relY, origin.x, origin.y, dimension.x, dimension.y, scale.x, scale.y, rotation, reg.getRegionX(), reg.getRegionY(), reg.getRegionWidth(), reg.getRegionHeight(), false, false);
             relX += dimension.x;
         }
 
         // Draw right edge
         reg = regEdge;
-        batch.draw(reg.getTexture(),position.x + relX, position.y + relY, origin.x + dimension.x / 8, origin.y, dimension.x / 4, dimension.y, scale.x, scale.y, rotation, reg.getRegionX(), reg.getRegionY(), reg.getRegionWidth(), reg.getRegionHeight(), true, false);
+        batch.draw(reg.getTexture(), position.x + relX, position.y + relY, origin.x + dimension.x / 8, origin.y, dimension.x / 4, dimension.y, scale.x, scale.y, rotation, reg.getRegionX(), reg.getRegionY(), reg.getRegionWidth(), reg.getRegionHeight(), true, false);
     }
 
     public void setLength(int length) {
         this.length = length;
 
-        bounds.set(0,0, dimension.x * length, dimension.y);
+        bounds.set(0, 0, dimension.x * length, dimension.y);
     }
 
     @Override
-    public void update (float deltaTime) {
+    public void update(float deltaTime) {
         super.update(deltaTime);
 
         floatCycleTimeLeft -= deltaTime;
-        if (floatCycleTimeLeft<= 0) {
+        if (floatCycleTimeLeft <= 0) {
             floatCycleTimeLeft = FLOAT_CYCLE_TIME;
             floatingDownwards = !floatingDownwards;
             body.setLinearVelocity(0, FLOAT_AMPLITUDE * (floatingDownwards ? -1 : 1));
@@ -83,7 +83,7 @@ public class Wall extends AbstractGameObject {
         }
     }
 
-    public void increaseLength(int amount){
+    public void increaseLength(int amount) {
         setLength(length + amount);
     }
 }

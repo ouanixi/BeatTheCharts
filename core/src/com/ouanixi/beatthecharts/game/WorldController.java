@@ -16,6 +16,9 @@ import com.ouanixi.beatthecharts.utils.AudioManager;
 import com.ouanixi.beatthecharts.utils.CameraController;
 import com.ouanixi.beatthecharts.utils.Constants;
 
+import java.util.Stack;
+
+
 /**
  * Created by ouanixi on 11/04/16.
  */
@@ -33,6 +36,7 @@ public class WorldController extends InputAdapter implements Disposable{
     public Level level;
     public int lives;
     public int score;
+    public final Stack<String> stages = new Stack();
 
     private float timeLeftGameOverDelay;
 
@@ -49,20 +53,30 @@ public class WorldController extends InputAdapter implements Disposable{
     }
 
     private void init() {
+        // Adding game levels
+        stages.add("final");
+        stages.add(Constants.LEVEL_03);
+        stages.add(Constants.LEVEL_02);
+        stages.add(Constants.LEVEL_01);
+
+
         accelerometerAvailable = Gdx.input.isPeripheralAvailable(Input.Peripheral.Accelerometer);
         cameraController = new CameraController();
         lives = Constants.LIVES_START;
         livesVisual = lives;
         timeLeftGameOverDelay = 0;
-        initLevel();
+        initLevel(stages.pop());
     }
 
-    private void initLevel () {
+    private void initLevel (String lvl) {
         score = 0;
         scoreVisual = score;
-        level = new Level(Constants.LEVEL_01);
-        cameraController.setTarget(level.kenny);
-        initPhysics();
+        if (lvl.equals("final")) backToMenu();
+        else {
+            level = new Level(lvl);
+            cameraController.setTarget(level.kenny);
+            initPhysics();
+        }
     }
 
 
@@ -72,7 +86,11 @@ public class WorldController extends InputAdapter implements Disposable{
 
 
     public void update (float deltaTime) {
-        if (isGameOver() || goalReached) {
+        if (goalReached) {
+            goalReached = false;
+            initLevel(stages.pop());
+        }
+        if (isGameOver()) {
             timeLeftGameOverDelay -= deltaTime;
             if (timeLeftGameOverDelay< 0) backToMenu();
         } else {
@@ -88,9 +106,9 @@ public class WorldController extends InputAdapter implements Disposable{
             if (isGameOver())
                 timeLeftGameOverDelay = Constants.TIME_DELAY_GAME_OVER;
             else
-                initLevel();
+                initLevel(stages.peek());
         }
-        level.mountains.updateScrollPosition(cameraController.getPosition());
+
         if(livesVisual > lives)
             livesVisual = Math.max(lives, livesVisual - 1 * deltaTime);
         if(scoreVisual < score)
@@ -191,7 +209,7 @@ public class WorldController extends InputAdapter implements Disposable{
         bottle.collected = true;
         AudioManager.instance.play(Assets.instance.sounds.pickupBottle);
         score += bottle.getScore();
-        Gdx.app.log(TAG, "Gold coin collected");
+        Gdx.app.log(TAG, "Musical Note collected");
     }
 
     private void onCollisionKennyWithPaper(Paper paper) {
@@ -199,7 +217,7 @@ public class WorldController extends InputAdapter implements Disposable{
         AudioManager.instance.play(Assets.instance.sounds.pickupPaper);
         score += paper.getScore();
         level.kenny.setPaperPowerup(true);
-        Gdx.app.log(TAG, "Feather collected");
+        Gdx.app.log(TAG, "Paper collected");
     }
 
     private void onCollisionKennyWithGoal(){

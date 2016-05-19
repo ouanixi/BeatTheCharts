@@ -8,12 +8,13 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
+import com.ouanixi.beatthecharts.parallax.ParallaxBackground;
+import com.ouanixi.beatthecharts.parallax.ParallaxLayer;
 import com.ouanixi.beatthecharts.utils.Constants;
 
 /**
@@ -28,7 +29,8 @@ public class Assets implements Disposable, AssetErrorListener {
     public AssetPaper paper;
     public AssetLevelDecoration levelDecoration;
     public AssetFonts fonts;
-    public AssetEnemy enemy;
+    public AssetBackground background;
+
 
     public AssetSounds sounds;
     public AssetMusic music;
@@ -40,7 +42,7 @@ public class Assets implements Disposable, AssetErrorListener {
 
     // Making this private to reflect the singleton pattern]
     // and prevent instantiation from anywhere apart from this class.
-    private Assets(){};
+    private Assets(){}
 
     public void init(AssetManager assetManager){
         this.assetManager = assetManager;
@@ -80,11 +82,12 @@ public class Assets implements Disposable, AssetErrorListener {
         levelDecoration = new AssetLevelDecoration(atlas);
         sounds = new AssetSounds(assetManager);
         music = new AssetMusic(assetManager);
+        //background = new AssetBackground();
     }
 
     @Override
     public void error(AssetDescriptor asset, Throwable throwable) {
-        Gdx.app.error(TAG, "Couldn't load asset '"+ asset + "'", (Exception)throwable);
+        Gdx.app.error(TAG, "Couldn't load asset '"+ asset + "'", throwable);
     }
 
 
@@ -131,13 +134,7 @@ public class Assets implements Disposable, AssetErrorListener {
         }
     }
 
-    public class AssetEnemy{
-        // TODO: Implement enemy class
-        public final AtlasRegion enemy;
-        public AssetEnemy(TextureAtlas atlas){
-            enemy = atlas.findRegion("item_bottle");
-        }
-    }
+
 
     public class AssetWall{
         public final AtlasRegion middle;
@@ -171,10 +168,6 @@ public class Assets implements Disposable, AssetErrorListener {
         public final AtlasRegion cloud01;
         public final AtlasRegion cloud02;
         public final AtlasRegion cloud03;
-        public final AtlasRegion buildingLeft;
-        public final AtlasRegion buildingRight;
-        public final AtlasRegion waterOverlay;
-
         public final AtlasRegion carrot;
         public final AtlasRegion goal;
 
@@ -182,9 +175,6 @@ public class Assets implements Disposable, AssetErrorListener {
             cloud01 = atlas.findRegion("cloud01");
             cloud02 = atlas.findRegion("cloud02");
             cloud03 = atlas.findRegion("cloud03");
-            buildingLeft = atlas.findRegion("mountain_left");
-            buildingRight = atlas.findRegion("mountain_right");
-            waterOverlay = atlas.findRegion("water_overlay");
             carrot = atlas.findRegion("carrot");
             goal = atlas.findRegion("goal");
         }
@@ -207,6 +197,26 @@ public class Assets implements Disposable, AssetErrorListener {
             defaultSmall.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
             defaultNormal.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
             defaultBig.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        }
+    }
+
+    public class AssetBackground {
+        public final ParallaxBackground rbg;
+        public final Sprite bg1;
+        public final Sprite bg2;
+        public final Sprite bg3;
+
+        public AssetBackground(){
+            bg1 = new Sprite(new Texture(Gdx.files.internal("assets-raw/images/background/bg1.png")));
+            bg2 = new Sprite(new Texture(Gdx.files.internal("assets-raw/images/background/bg2.png")));
+            bg3 = new Sprite(new Texture(Gdx.files.internal("assets-raw/images/background/bg3.png")));
+
+            rbg = new ParallaxBackground(new ParallaxLayer[]{
+                    new ParallaxLayer(bg1 ,new Vector2(),new Vector2(0, 0)),
+                    new ParallaxLayer(bg2, new Vector2(1.0f,1.0f),new Vector2(0, 500)),
+                    new ParallaxLayer(bg3, new Vector2(0.1f,0),new Vector2(0,Constants.VIEWPORT_HEIGHT-200),new Vector2(0, 0)),
+            }, 800, 480,new Vector2(150,0));
+
         }
     }
 
