@@ -15,7 +15,7 @@ public class Level {
     public Kenny kenny;
     public Array<Bottle> bottles;
     public Array<Paper> papers;
-    public Array<Carrot> carrots;
+    public Array<Saxophone> saxes;
     public Goal goal;
     // objects
     public Array<Wall> walls;
@@ -36,7 +36,7 @@ public class Level {
         walls = new Array<Wall>();
         bottles = new Array<Bottle>();
         papers = new Array<Paper>();
-        carrots = new Array<Carrot>();
+        saxes = new Array<Saxophone>();
 
         // load image file that represents the level data
         Pixmap pixmap = new Pixmap(Gdx.files.internal(filename));
@@ -138,9 +138,9 @@ public class Level {
         for (Paper feather : papers)
             feather.render(batch);
 
-        // draw carrots
-        for (Carrot carrot: carrots)
-                carrot.render(batch);
+        // draw saxes
+        for (Saxophone sax: saxes)
+                sax.render(batch);
 
         // Draw Player Character
         kenny.render(batch);
@@ -159,8 +159,8 @@ public class Level {
             goldCoin.update(deltaTime);
         for (Paper feather : papers)
             feather.update(deltaTime);
-        for (Carrot carrot : carrots)
-            carrot.update(deltaTime);
+        for (Saxophone sax : saxes)
+            sax.update(deltaTime);
         clouds.update(deltaTime);
     }
 

@@ -13,8 +13,6 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
-import com.ouanixi.beatthecharts.parallax.ParallaxBackground;
-import com.ouanixi.beatthecharts.parallax.ParallaxLayer;
 import com.ouanixi.beatthecharts.utils.Constants;
 
 /**
@@ -29,7 +27,6 @@ public class Assets implements Disposable, AssetErrorListener {
     public AssetPaper paper;
     public AssetLevelDecoration levelDecoration;
     public AssetFonts fonts;
-    public AssetBackground background;
 
 
     public AssetSounds sounds;
@@ -40,7 +37,7 @@ public class Assets implements Disposable, AssetErrorListener {
     private AssetManager assetManager;
 
 
-    // Making this private to reflect the singleton pattern]
+    // Making this private to reflect the singleton pattern
     // and prevent instantiation from anywhere apart from this class.
     private Assets(){}
 
@@ -200,25 +197,7 @@ public class Assets implements Disposable, AssetErrorListener {
         }
     }
 
-    public class AssetBackground {
-        public final ParallaxBackground rbg;
-        public final Sprite bg1;
-        public final Sprite bg2;
-        public final Sprite bg3;
 
-        public AssetBackground(){
-            bg1 = new Sprite(new Texture(Gdx.files.internal("assets-raw/images/background/bg1.png")));
-            bg2 = new Sprite(new Texture(Gdx.files.internal("assets-raw/images/background/bg2.png")));
-            bg3 = new Sprite(new Texture(Gdx.files.internal("assets-raw/images/background/bg3.png")));
-
-            rbg = new ParallaxBackground(new ParallaxLayer[]{
-                    new ParallaxLayer(bg1 ,new Vector2(),new Vector2(0, 0)),
-                    new ParallaxLayer(bg2, new Vector2(1.0f,1.0f),new Vector2(0, 500)),
-                    new ParallaxLayer(bg3, new Vector2(0.1f,0),new Vector2(0,Constants.VIEWPORT_HEIGHT-200),new Vector2(0, 0)),
-            }, 800, 480,new Vector2(150,0));
-
-        }
-    }
 
     public class AssetSounds {
         public final Sound jump;

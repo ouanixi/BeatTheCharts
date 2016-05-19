@@ -8,10 +8,10 @@ import com.ouanixi.beatthecharts.game.Assets;
 /**
  * Created by ouanixi on 15/04/16.
  */
-public class Carrot extends AbstractGameObject {
+public class Saxophone extends AbstractGameObject {
     private TextureRegion regCarrot;
 
-    public Carrot () {
+    public Saxophone () {
         init();
     }
 

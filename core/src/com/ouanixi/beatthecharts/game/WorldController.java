@@ -79,16 +79,13 @@ public class WorldController extends InputAdapter implements Disposable{
         }
     }
 
-
-
-
-
-
-
     public void update (float deltaTime) {
         if (goalReached) {
-            goalReached = false;
-            initLevel(stages.pop());
+            timeLeftGameOverDelay -= deltaTime;
+            if (timeLeftGameOverDelay< 0) {
+                goalReached = false;
+                initLevel(stages.pop());
+            }
         }
         if (isGameOver()) {
             timeLeftGameOverDelay -= deltaTime;
@@ -225,7 +222,7 @@ public class WorldController extends InputAdapter implements Disposable{
         timeLeftGameOverDelay = Constants.TIME_DELAY_GAME_FINISHED;
         Vector2 centerPosBunnyHead = new Vector2(level.kenny.position);
         centerPosBunnyHead.x += level.kenny.bounds.width;
-        spawnCarrots(centerPosBunnyHead, Constants.CARROTS_SPAWN_MAX, Constants.CARROTS_SPAWN_RADIUS);
+        spawnSaxophones(centerPosBunnyHead, Constants.CARROTS_SPAWN_MAX, Constants.CARROTS_SPAWN_RADIUS);
     }
 
     private void testCollisions(){
@@ -311,31 +308,31 @@ public class WorldController extends InputAdapter implements Disposable{
         }
     }
 
-    private void spawnCarrots (Vector2 pos, int numCarrots, float radius) {
-        float carrotShapeScale = 0.5f;
-        // create carrots with box2d body and fixture
-        for (int i = 0; i<numCarrots; i++) {
-            Carrot carrot = new Carrot();
+    private void spawnSaxophones (Vector2 pos, int numSaxophones, float radius) {
+        float saxShapeScale = 0.5f;
+        // create saxs with box2d body and fixture
+        for (int i = 0; i<numSaxophones; i++) {
+            Saxophone sax = new Saxophone();
             // calculate random spawn position, rotation, and scale
             float x = MathUtils.random(-radius, radius);
             float y = MathUtils.random(5.0f, 15.0f);
             float rotation = MathUtils.random(0.0f, 360.0f)
                     * MathUtils.degreesToRadians;
-            float carrotScale = MathUtils.random(0.5f, 1.5f);
-            carrot.scale.set(carrotScale, carrotScale);
-            // create box2d body for carrot with start position// and angle of rotation
+            float saxScale = MathUtils.random(0.5f, 1.5f);
+            sax.scale.set(saxScale, saxScale);
+            // create box2d body for sax with start position// and angle of rotation
             BodyDef bodyDef = new BodyDef();
             bodyDef.position.set(pos);
             bodyDef.position.add(x, y);
             bodyDef.angle = rotation;
             Body body = b2world.createBody(bodyDef);
             body.setType(BodyDef.BodyType.DynamicBody);
-            carrot.body = body;
-            // create rectangular shape for carrot to allow// interactions (collisions) with other objects
+            sax.body = body;
+            // create rectangular shape for sax to allow// interactions (collisions) with other objects
             PolygonShape polygonShape = new PolygonShape();
-            float halfWidth = carrot.bounds.width / 2.0f * carrotScale;
-            float halfHeight = carrot.bounds.height /2.0f * carrotScale;
-            polygonShape.setAsBox(halfWidth * carrotShapeScale, halfHeight * carrotShapeScale);
+            float halfWidth = sax.bounds.width / 2.0f * saxScale;
+            float halfHeight = sax.bounds.height /2.0f * saxScale;
+            polygonShape.setAsBox(halfWidth * saxShapeScale, halfHeight * saxShapeScale);
             // set physics attributes
             FixtureDef fixtureDef = new FixtureDef();
             fixtureDef.shape = polygonShape;
@@ -344,8 +341,8 @@ public class WorldController extends InputAdapter implements Disposable{
             fixtureDef.friction = 0.5f;
             body.createFixture(fixtureDef);
             polygonShape.dispose();
-            // finally, add new carrot to list for updating/rendering
-            level.carrots.add(carrot);
+            // finally, add new sax to list for updating/rendering
+            level.saxes.add(sax);
         }
     }
 
